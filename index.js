@@ -1,8 +1,10 @@
 import express from "express";
 import Lab5 from "./Lab5/index.js";
 import UserRoutes from "./Kanbas/Users/routes.js";
-import CourseRoutes from "./Kanbas/Courses/routes.js";
 import cors from "cors";
+import session from "express-session";
+import "dotenv/config";
+import CourseRoutes from "./Kanbas/Courses/routes.js";
 import ModuleRoutes from "./Kanbas/Modules/routes.js";
 
 const app = express();
@@ -25,10 +27,14 @@ if (process.env.NODE_ENV !== "development") {
         domain: process.env.NODE_SERVER_DOMAIN,
     };
 }
+
+app.use(
+    session(sessionOptions)
+);
+
 app.use(express.json());
 Lab5(app);
 UserRoutes(app);
 CourseRoutes(app);
-EnrollmentRoutes(app);
 ModuleRoutes(app);
 app.listen(4000);
