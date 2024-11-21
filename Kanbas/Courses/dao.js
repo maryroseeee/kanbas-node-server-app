@@ -15,6 +15,7 @@ export function createCourse(course) {
     Database.courses = [...Database.courses, newCourse];
     return newCourse;
 }
+
 export function deleteCourse(courseId) {
     const { courses, enrollments } = Database;
     Database.courses = courses.filter((course) => course._id !== courseId);
