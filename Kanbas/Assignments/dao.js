@@ -1,9 +1,10 @@
 import Database from "../Database/index.js";
 
-export function findAssignmentForCourse(courseId) {
-    const { assignments} = Database;
-    const courseAssignments = assignments.filter((course)  =>
-                                                     assignment.course === courseId);
+export function findAssignmentsForCourse(courseId) {
+    const { assignments } = Database;
+    const courseAssignments = assignments.filter(
+        (assignment) => assignment.course === courseId
+    );
     return courseAssignments;
 }
 
