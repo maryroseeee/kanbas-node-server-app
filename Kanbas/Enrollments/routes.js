@@ -1,9 +1,10 @@
 import * as enrollmentsDao from "./dao.js";
 import enrollments from "../Database/enrollments.js";
-export default function AssignmentRoutes(app) {
-    app.delete("/api/enrollments/:enrollmentId", (req, res) => {
+import * as assignmentsDao from "../Assignments/dao.js";
+export default function EnrollmentRoutes(app) {
+    app.delete("/api/enrollments/:enrollmentId", async (req, res) => {
         const { enrollmentId } = req.params;
-        enrollmentsDao.deleteEnrollment(enrollmentId);
-        res.sendStatus(204);
+        const status = await enrollmentsDao.deleteEnrollment(enrollmentId);
+        res.send(status);
     });
 }
