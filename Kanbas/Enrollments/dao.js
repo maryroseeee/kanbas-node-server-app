@@ -7,7 +7,7 @@ export async function findEnrollmentsForUser(userId) {
 }
 
 export function enrollUserInCourse(userId, courseId) {
-    return model.create({ user, course });
+    return model.create({ userId, courseId });
 }
 
 export function deleteEnrollment(enrollmentId) {
@@ -23,9 +23,8 @@ export function createEnrollment(enrollment) {
 
 
 export async function findUsersForCourse(courseId) {
- const enrollments = await model.find({ course: courseId }).populate("user");
- return enrollments.map((enrollment) => enrollment.user);
+    const enrollments = await model.find({ course: courseId }).populate("user");
+    return enrollments.map((enrollment) => enrollment.user);
 }
-
 
 
