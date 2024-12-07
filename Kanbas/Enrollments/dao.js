@@ -11,14 +11,13 @@ export function enrollUserInCourse(userId, courseId) {
 }
 
 export function deleteEnrollment(enrollmentId) {
-    return model.deleteOne({ user, course });
+    return model.deleteOne({ enrollmentId });
 
 }
 
 export function createEnrollment(enrollment) {
-    const newEnrollment = { ...enrollment, _id: Date.now().toString() };
-    Database.enrollments = [...Database.enrollments, newEnrollment];
-    return newEnrollment;
+    delete enrollment._id
+    return model.create(enrollment);
 }
 
 
