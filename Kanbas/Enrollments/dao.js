@@ -6,9 +6,6 @@ export async function findEnrollmentsForUser(userId) {
     return enrollments.map((enrollment) => enrollment.course);
 }
 
-export function enrollUserInCourse(userId, courseId) {
-    return model.create({ userId, courseId });
-}
 
 export function deleteEnrollment(enrollmentId) {
     return model.deleteOne({ enrollmentId });
@@ -26,4 +23,13 @@ export async function findUsersForCourse(courseId) {
     return enrollments.map((enrollment) => enrollment.user);
 }
 
+export function enrollUserInCourse(user, course) {
+    return model.create({ user, course });
+}
+export function unenrollUserFromCourse(user, course) {
+    return model.deleteOne({ user, course });
+}
 
+export function updateEnrollment(enrollmentId, enrollmentUpdate) {
+    return model.updateOne({ _id: enrollmentId }, enrollmentUpdate);
+}

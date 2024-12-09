@@ -7,4 +7,6 @@ export default function EnrollmentRoutes(app) {
         const status = await enrollmentsDao.deleteEnrollment(enrollmentId);
         res.send(status);
     });
+
+
 }
